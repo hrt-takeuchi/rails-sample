@@ -1,6 +1,32 @@
 <h1>こんにちは、<%= current_user.email %>さん</h1>
 <p>ユーザー用ページです。</p>
 
+<div id="mapid"></div>
+
 <%= month_calendar do |date| %>
   <%= date %>
 <% end %>
+
+ 
+
+ <style type="text/css">
+<!--
+#mapid { height: 300px; }
+//-->
+</style>
+
+<script type="text/javascript">
+
+var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox.streets',
+    accessToken: 'hogehoge'
+    //ここでaccess_tokenを取得して貼り付けてください
+    //https://www.mapbox.com/studio/account/tokens/
+}).addTo(mymap);
+
+
+
+</script>
